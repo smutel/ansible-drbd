@@ -25,7 +25,7 @@ resource {{ disk['resource'] }} {
   }
 
   {% if drbd_connection_mesh is sameas true %}connection-mesh {
-    hosts {%·for·host2·in·groups[drbd_group]·%}{{ hostvars[host2]['inventory_hostname_short'] }}{% endfor %}
+    hosts {% for host2 in groups[drbd_group] %}{{ hostvars[host2]['inventory_hostname_short'] }}{% endfor %}
   }{% endif %}
 {% endfor %}
 }
